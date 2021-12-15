@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+ <title></title>
+ <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
+
+<style >
+ body{
+  background-image: linear-gradient(rgba(0,0,0,0.3),rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/1028725/pexels-photo-1028725.jpeg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+ }
+ header{
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+ }
+</style>
+</head>
+<body>
+
+<header >
+ 
+<div class="card w-50 m-auto text-center ">
+  <div class="card-header bg-danger text-white">LOVE CALCULATOR</div>
+  <div class="card-body">
+   <form class="form-inline w-75 m-auto" method="post" action="connect.php">
+    <div class="form-group">
+     <input type="text" name="yourname" class="form-control text-center" placeholder="Your Name" id="name" >
+    </div>
+    <div class="pl-4 pr-4">
+     <span> + </span>
+    </div>
+    <div class="form-group">
+     <input type="text" name="lovename" class="form-control text-center" placeholder=" Love Name" id="lname">
+    </div>
+   </form> <br>
+    <div class="w-70 m-auto">
+     <button  class="btn btn-success w-50" onclick="checkloveper()"> click </button>
+    </div>
+    <br>
+    <div>
+     <input type="text" name="" placeholder="LOVE PERCENTAGE" class="form-control text-center w-25 m-auto" id="lovevalue" >
+    </div>
+  </div> 
+  <div class="card-footer ">God Bless Your RelationShip</div>
+</div>
+
+</header>
+
+<script>
+ function checkloveper(){
+
+  var name = document.getElementById('name').value;
+  var lname = document.getElementById('lname').value;
+  var text=0,text1=0;
+  for (let i = 0; i < name.length; i++) {
+  text += name.charCodeAt(i);
+}
+for (let i = 0; i < lname.length; i++) {
+  text1 += lname.charCodeAt(i);
+}
+var l1=name.length;
+var l2=lname.length;
+
+var ans;
+if(text>text1)
+{
+  text=Math.floor(text);
+  text1=Math.ceil(text1);
+  if(l1>l2){
+  ans=(text1*l2)/(text*l1);
+  }else{
+    ans=(text1*l1)/(text*l2);
+  }
+
+}else{
+  text1=Math.floor(text1);
+  text=Math.ceil(text);
+  if(l1>l2){
+  ans=(text*l2)/(text1*l1);
+  }else{
+    ans=(text*l1)/(text1*l2);
+  }
+}
+console.log(ans);
+  if(name == ""){
+   alert('Please enter your name');
+  }else if (name.length <=2 ) {
+   alert('Min lenght is 3')
+  }else if(!isNaN(name)){
+   alert('Numbers are not allowed');
+  }
+
+  else if(lname == ""){
+   alert('Please enter your love name');
+  }else if (lname.length <=2 ) {
+   alert('Min lenght is 3')
+  }else if(!isNaN(lname)){
+   alert('Numbers are not allowed');
+  }
+  else{
+ var lovdata = Math.random() * 100;
+ lovdata = Math.floor(lovdata);
+ ans=ans*100;
+ ans=Math.floor(ans);
+ console.log(ans);
+  document.getElementById('lovevalue').value = ans + "%"; 
+  }
+  
+ }
+</script>
+</body>
+
+</html>
